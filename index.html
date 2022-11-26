@@ -1,9 +1,80 @@
+<title>Political Test</title>
 <center>
-<video autoplay loop muted>
-<source src="https://shattereddisk.github.io/rickroll/rickroll.mp4" type="video/mp4">
-</video>
+    <h1 id="title">Political Test</h1>
+    <button id="button"><span>BEGIN</span></button>
+    <div>
+        <video id="video" style="height:100%;display:none;" loop>
+            <source src="https://shattereddisk.github.io/rickroll/rickroll.mp4" type="video/mp4">
+        </video>
+    </div>
 </center>
+<script>
+    var title = document.getElementById("title");
+    var button = document.getElementById("button");
+    var video = document.getElementById("video");
+    button.addEventListener("click", function () {
+        title.remove();
+        button.remove();
+        video.style.display = "block";
+        video.play();
+    });
+</script>
 <style>
-body {background-color:black}
-video {height:100%}
+    html {
+        background-color: black;
+    }
+
+    h1 {
+        color: white;
+        font-size: 64px;
+    }
+
+    button {
+        color: black;
+        border: none;
+        border-radius: 16px;
+        padding: 16px;
+        cursor: pointer;
+        margin: auto;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        font-family: Uni;
+        display: block;
+        border-radius: 16px;
+        background-color: lightgrey;
+        text-align: center;
+        font-size: 32px;
+        padding: 16px;
+        width: 40%;
+        transition: all .25s ease-in-out;
+        cursor: pointer
+    }
+
+    button:hover {
+        background-color: white;
+    }
+
+    button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: all .25s ease-in-out
+    }
+
+    button span:after {
+        content: "»";
+        position: absolute;
+        opacity: 0;
+        right: -32px;
+        transition: all .25s ease-in-out
+    }
+
+    button:hover span {
+        padding-right: 32px
+    }
+
+    button:hover span:after {
+        opacity: 1;
+        right: 0
+    }
 </style>
