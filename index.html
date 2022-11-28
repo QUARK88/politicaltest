@@ -1,22 +1,73 @@
-<title>Political Test</title>
+<head>
+    <title>Prototype Test</title>
+</head>
 <center>
-    <h1 id="title">Political Test</h1>
-    <button id="button"><span>BEGIN</span></button>
+    <h1 id="title">Prototype Test</h1>
+    <h2 id="explanation">This prototype test will be able to roughly estimate your political ideology with only 4
+        questions!</h2>
+    <div id="holder" style="background-color:#202020ff;border-radius:32px;padding:32px;display:none;width:50%;">
+        <h2 id="question1" style="display:none;">We should never give people up.</h2>
+        <h2 id="question2" style="display:none;">We should never let people down.</h2>
+        <h2 id="question3" style="display:none;">We should never run around.</h2>
+        <h2 id="question4" style="display:none;">We should never desert people.</h2>
+    </div>
+    <h2 id="result" style="display:none;">Closest Match: Rickrollism</h2>
+    <button id="begin"><span>BEGIN</span></button>
+    <div id="answers" style="display:none;">
+        <button>Strongly Agree</button>
+        <button>Agree</button>
+        <button>Neutral</button>
+        <button>Disagree</button>
+        <button>Strongly Disagree</button>
+    </div>
     <div>
-        <video id="video" style="height:100%;display:none;" loop>
+        <video id="video" style="height:60%;display:none;" loop>
             <source src="https://shattereddisk.github.io/rickroll/rickroll.mp4" type="video/mp4">
         </video>
     </div>
 </center>
 <script>
+    var begin = document.getElementById("begin");
     var title = document.getElementById("title");
-    var button = document.getElementById("button");
+    var explanation = document.getElementById("explanation");
+    var result = document.getElementById("result");
+    var answers = document.getElementById("answers");
+    var holder = document.getElementById("holder");
+    var question1 = document.getElementById("question1");
+    var question2 = document.getElementById("question2");
+    var question3 = document.getElementById("question3");
+    var question4 = document.getElementById("question4");
     var video = document.getElementById("video");
-    button.addEventListener("click", function () {
-        title.remove();
-        button.remove();
-        video.style.display = "block";
-        video.play();
+    begin.addEventListener("click", function () {
+        begin.remove();
+        explanation.remove();
+        holder.style.display = "block";
+        question1.style.display = "block";
+        answers.style.display = "block";
+    });
+    var x = 0
+    answers.addEventListener("click", function () {
+        x += 1
+        if (x == 1) {
+            question1.style.display = "none";
+            question2.style.display = "block";
+        }
+        if (x == 2) {
+            question2.style.display = "none";
+            question3.style.display = "block";
+        }
+        if (x == 3) {
+            question3.style.display = "none";
+            question4.style.display = "block";
+        }
+        if (x == 4) {
+            holder.style.display = "none";
+            question4.style.display = "none";
+            answers.remove();
+            result.style.display = "block";
+            video.style.display = "block";
+            video.play();
+        }
     });
 </script>
 <style>
@@ -27,6 +78,11 @@
     h1 {
         color: white;
         font-size: 64px;
+    }
+
+    h2 {
+        color: white;
+        font-size: 32px;
     }
 
     button {
